@@ -12,6 +12,8 @@
   function handleChange(event) {
     theme = event.target.value;
     localStorage.setItem('theme', theme);
+
+    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
   }
 
   $: if (rootEl && theme === 'light') {
