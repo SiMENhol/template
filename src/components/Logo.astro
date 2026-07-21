@@ -12,5 +12,36 @@
 </style>
 
 <a href="/">
-  <img alt="Blog Logo" src="/assets/logo.webp" width="75" height="50" />
+  <img id="site-logo" alt="Blog Logo" src="/assets/logo.webp" width="75" height="50" />
 </a>
+
+<script is:inline>
+  const lightLogo = '/assets/logo2.webp'
+  const darkLogo = '/assets/logo.webp'
+
+  const updateLogo = () => {
+    const logo = document.getElementById('site-logo')
+
+    if (!logo) {
+      return
+    }
+
+    logo.src = document.documentElement.classList.contains('theme-dark') ? darkLogo : lightLogo
+  }
+
+  const observeTheme = () => {
+    updateLogo()
+
+    const observer = new MutationObserver(updateLogo)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observeTheme, { once: true })
+  } else {
+    observeTheme()
+  }
+</script>
