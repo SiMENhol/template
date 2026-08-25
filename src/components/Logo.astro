@@ -39,6 +39,8 @@
     })
   }
 
+  document.addEventListener('astro:page-load', updateLogo)
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', observeTheme, { once: true })
   } else {
