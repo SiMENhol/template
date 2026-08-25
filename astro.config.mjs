@@ -5,13 +5,10 @@ import remarkGfm from 'remark-gfm'
 import remarkSmartypants from 'remark-smartypants'
 import rehypeExternalLinks from 'rehype-external-links'
 
-import cloudflare from "@astrojs/cloudflare";
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://astro-blog-template.netlify.app',
   integrations: [mdx(), svelte()],
-
   markdown: {
     shikiConfig: {
       theme: 'nord',
@@ -26,6 +23,4 @@ export default defineConfig({
       ],
     ],
   },
-
-  adapter: cloudflare()
 })
